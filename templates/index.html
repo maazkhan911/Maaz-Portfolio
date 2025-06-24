@@ -1,0 +1,1124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maaz Khan | Portfolio</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(to right, #0f0f1a, #1a1a2e);
+        color: #ffffff;
+      }
+
+      /* ===== Navbar ===== */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 40px;
+        background-color: #111122;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        color: #4fc3f7;
+        font-weight: bold;
+      }
+
+      .center-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .center-links a {
+        text-decoration: none;
+        color: #ccc;
+        font-size: 1rem;
+        transition: 0.3s ease;
+      }
+
+      .center-links a:hover {
+        color: #fff;
+      }
+
+      .social-buttons a {
+        text-decoration: none;
+        border: 1px solid #4fc3f7;
+        color: #4fc3f7;
+        padding: 8px 14px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+
+      .social-buttons a:hover {
+        background-color: #4fc3f7;
+        color: #0f0f1a;
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 20px;
+      }
+
+      .hero-container {
+        max-width: 1100px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-text {
+        max-width: 500px;
+      }
+
+      .hero-text h1 {
+        font-size: 3.2rem;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .hero-text h3 {
+        font-size: 1.8rem;
+        color: #a48fff;
+        margin-bottom: 25px;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        color: #cccccc;
+        line-height: 1.8;
+        margin-bottom: 35px;
+      }
+
+      .hero-text a {
+        font-size: 1.05rem;
+        padding: 14px 36px;
+        font-weight: 600;
+        border-radius: 8px;
+        background: linear-gradient(to right, #a855f7, #6366f1);
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .hero-text a:hover {
+        opacity: 0.9;
+      }
+
+      .hero-img img {
+        width: 400px;
+        height: 480px;
+        border-radius: 50% / 40%;
+        box-shadow: 0 0 25px rgba(169, 104, 255, 0.4);
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .hero-img img:hover {
+        transform: scale(1.03);
+      }
+
+      @media screen and (max-width: 768px) {
+        .hero-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 40px;
+        }
+
+        .hero-img img {
+          width: 220px;
+          height: 270px;
+        }
+      }
+
+      /* ===== SKILLS SECTION ===== */
+      .skills {
+        padding: 100px 20px 80px;
+        background-color: #0a0a1f;
+        text-align: center;
+      }
+
+      .skills-container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .skills h2 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: #ffffff;
+      }
+
+      .skills p {
+        font-size: 1.2rem;
+        color: #cccccc;
+        margin-bottom: 60px;
+      }
+
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .skill-box {
+        border: 1px solid #4f8cff;
+        border-radius: 12px;
+        padding: 40px 30px;
+        width: 400px;
+        background-color: #121232;
+        color: #ffffff;
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 20px rgba(79, 140, 255, 0.25);
+      }
+
+      .skill-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 25px rgba(79, 140, 255, 0.5);
+      }
+
+      .skill-box h3 {
+        margin-bottom: 30px;
+        color: #a48fff;
+        font-size: 1.6rem;
+      }
+
+      .tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .tool {
+        padding: 8px 14px;
+        background-color: #1f1f3a;
+        color: #ffffff;
+        border: 1px solid #4f8cff;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        box-shadow: 0 0 10px rgba(79, 140, 255, 0.1);
+      }
+
+      /* Center Programming box */
+      .skill-box.full-width {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      @media screen and (max-width: 768px) {
+        .skills-grid {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .skill-box {
+          width: 90%;
+        }
+      }
+
+      .experience {
+        padding: 80px 20px;
+        background-color: #0f0f1a;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .experience-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .experience h2 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: #ffffff;
+      }
+
+      .experience p {
+        font-size: 1.2rem;
+        color: #cccccc;
+        margin-bottom: 50px;
+      }
+
+      .exp-card {
+        background-color: #121232;
+        border: 1px solid #4f8cff;
+        border-radius: 12px;
+        padding: 40px 30px;
+        box-shadow: 0 0 20px rgba(79, 140, 255, 0.25);
+        text-align: left;
+      }
+
+      .exp-card h3 {
+        color: #a48fff;
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+      }
+
+      .exp-card .company {
+        color: #88aaff;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .exp-desc p {
+        color: #dddddd;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      .exp-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill-chip {
+        background-color: #1f1f3a;
+        border: 1px solid #4f8cff;
+        color: #ffffff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+
+      .projects {
+        padding: 100px 20px;
+        background-color: #0a0a1f;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      .projects h2 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: #ffffff;
+      }
+
+      .projects p {
+        font-size: 1.2rem;
+        color: #cccccc;
+        margin-bottom: 50px;
+      }
+
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        background: none;
+        color: #4fc3f7;
+        border: 1px solid #4fc3f7;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: #4fc3f7;
+        color: #0f0f1a;
+      }
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.project-card {
+  width: 340px;
+  background-color: #121232;
+  border: 1px solid #4f8cff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(79, 140, 255, 0.2);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .project-card {
+    width: calc(50% - 30px); /* 2 per row */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .project-card {
+    width: 100%; /* 1 per row */
+  }
+}
+
+      .project-card.expanded {
+        max-height: 1000px;
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(79, 140, 255, 0.5);
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .project-body {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .project-body h3 {
+        font-size: 1.4rem;
+        color: #a48fff;
+        margin-bottom: 10px;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .project-tags span {
+        background-color: #1f1f3a;
+        border: 1px solid #4f8cff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+      }
+
+      .project-body p {
+        font-size: 0.95rem;
+        color: #cccccc;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .project-body .full-description {
+        display: none;
+      }
+
+      .project-card.expanded .full-description {
+        display: block;
+      }
+
+      .project-card.expanded .short-description {
+        display: none;
+      }
+
+      .project-links {
+        display: none;
+        gap: 14px;
+        margin-top: auto;
+      }
+
+      .project-card.expanded .project-links {
+        display: flex;
+      }
+
+      .project-links a {
+        padding: 10px 14px;
+        background-color: #4fc3f7;
+        color: #0f0f1a;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .project-links a:hover {
+        background-color: #37b0e9;
+      }
+
+      @media screen and (max-width: 768px) {
+        .project-card {
+          width: 90%;
+        }
+      }
+
+  .education {
+  padding: 60px 20px;
+  background-color: #0a0a1f;
+  text-align: center;
+  color: #ffffff;
+}
+
+.education h2 {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.education p {
+  font-size: 1rem;
+  color: #cccccc;
+  margin-bottom: 30px;
+}
+
+.education-boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.edu-card {
+  width: 90%;
+  max-width: 600px;
+  background-color: #121232;
+  border: 1px solid #4f8cff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(79, 140, 255, 0.15);
+  padding: 12px 20px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 14px rgba(79, 140, 255, 0.25);
+}
+
+.edu-card h3 {
+  font-size: 1.05rem;
+  color: #a48fff;
+  margin-bottom: 4px;
+}
+
+.edu-level {
+  font-size: 0.9rem;
+  color: #4fc3f7;
+  margin-bottom: 1px;
+}
+
+.edu-date {
+  font-size: 0.8rem;
+  color: #cccccc;
+  margin-bottom: 5px;
+}
+
+.edu-desc {
+  font-size: 0.8rem;
+  color: #dddddd;
+  line-height: 1.4;
+}
+
+.footer {
+  background-color: #111132;
+  padding: 30px 20px;
+  color: #cccccc;
+  text-align: center;
+  border-top: 1px solid #333;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #4fc3f7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <div class="logo">🌀 Portfolio</div>
+      <div class="center-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+      </div>
+      <div class="social-buttons">
+        <a href="https://linkedin.com/in/maazkhan1122" target="_blank"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/maazkhan911" target="_blank">GitHub</a>
+      </div>
+    </nav>
+
+    <!-- ===== HERO / ABOUT SECTION ===== -->
+    <section class="hero" id="about">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h1>Hi, I am Maaz Khan</h1>
+          <h3>I am a Machine Learning Developer</h3>
+          <p>
+            I’m a young, hardworking, and passionate learner who believes in
+            giving his best in everything. I stay focused, stay positive, and
+            always look for ways to grow. I treat every challenge as a step
+            towards something better.
+          </p>
+          <a
+            href="https://drive.google.com/file/d/1kSFNaK4dBboZXZx7NQy6txWbsQ_JAByT/view?usp=sharing"
+            target="_blank"
+            >Check Resume</a
+          >
+        </div>
+        <div class="hero-img">
+          <img src="{% static 'images/me.jpg' %}" alt="Maaz Khan" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section class="skills" id="skills">
+      <div class="skills-container">
+        <h2>Skills</h2>
+        <p>I have been working with these technologies for the past 2 years:</p>
+
+        <!-- === ROW 1: Programming Centered === -->
+        <div class="skills-grid" style="justify-content: center">
+          <div class="skill-box">
+            <h3>💻 Programming</h3>
+            <div class="tools">
+              <span class="tool">🐍 Python</span>
+              <span class="tool">🌐 JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- === ROW 2: ML + DL === -->
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>🤖 Machine Learning</h3>
+            <div class="tools">
+              <span class="tool">🧮 NumPy</span>
+              <span class="tool">🧹 Pandas</span>
+              <span class="tool">📈 Scikit-learn</span>
+              <span class="tool">📊 Seaborn</span>
+              <span class="tool">📉 Matplotlib</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3>🧠 Deep Learning</h3>
+            <div class="tools">
+              <span class="tool">🧱 Keras</span>
+              <span class="tool">🔬 TensorFlow</span>
+              <span class="tool">🧠 CNN</span>
+              <span class="tool">🔁 ANN</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- === ROW 3: Web Dev + Chatbot === -->
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>🌍 Web Development</h3>
+            <div class="tools">
+              <span class="tool">⚙️ Django</span>
+              <span class="tool">🖼 HTML</span>
+              <span class="tool">🎨 CSS</span>
+              <span class="tool">🌿 Git</span>
+              <span class="tool">🐱 GitHub</span>
+              <span class="tool">🔵 Bootstrap</span>
+              <span class="tool">🌐 Flask</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3>💬 Chatbot Development</h3>
+            <div class="tools">
+              <span class="tool">🤖 Dialogflow</span>
+              <span class="tool">🧠 GPT-2</span>
+              <span class="tool">⚡ GPT-3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE SECTION ===== -->
+    <section class="experience" id="experience">
+      <div class="experience-container">
+        <h2>Experience</h2>
+        <p>My experience as an IT Engineer</p>
+
+        <div class="exp-card">
+          <h3>💼 Machine Learning Intern</h3>
+          <p class="company">AirforMax Pvt Ltd — Jan 2025 to April 2025</p>
+
+          <div class="exp-desc">
+            <p>
+              Worked as part of a passionate team focused on delivering
+              AI-powered solutions. I contributed to model training, data
+              preprocessing, and deployment of ML systems. Collaborated closely
+              with web developers and backend engineers to integrate ML features
+              into full-stack applications. Gained valuable hands-on experience
+              in end-to-end ML pipelines.
+            </p>
+          </div>
+
+          <div class="exp-skills">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">HTML</span>
+            <span class="skill-chip">CSS</span>
+            <span class="skill-chip">Django</span>
+            <span class="skill-chip">Machine Learning</span>
+            <span class="skill-chip">Data Cleaning</span>
+            <span class="skill-chip">Model Training</span>
+            <span class="skill-chip">Model Deployment</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION ===== -->
+  <section class="projects" id="projects">
+  <div class="projects-container">
+    <h2>Projects</h2>
+    <p>Here are some of the best projects I’ve worked on recently.</p>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="ml">Machine Learning</button>
+      <button class="filter-btn" data-category="dl">Deep Learning</button>
+      <button class="filter-btn" data-category="chatbot">Chatbot Dev</button>
+    </div>
+
+    <!-- All Projects in One Grid (MindMate first) -->
+
+      <!-- ⭐ MindMate – Featured -->
+<div class="projects-grid" style="justify-content: center; margin-bottom: 40px;">
+  <div class="project-card" data-category="featured">
+    <img src="{% static 'images/MindMate.png' %}" alt="MindMate" />
+    <div class="project-body">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>🧠 MindMate – Emotion Detector</h3>
+        <span style="background-color: gold; color: black; padding: 4px 10px; border-radius: 6px; font-weight: bold;">⭐ Featured</span>
+      </div>
+      <div class="project-tags">
+        <span>CNN</span><span>Dialogflow</span><span>Django</span>
+      </div>
+      <p class="short-description">Detects emotions using AI & facial analysis.</p>
+      <p class="full-description">
+        MindMate is an AI-powered assistant that detects emotions via facial expressions using CNN and through chatbot interaction using Dialogflow, built with a Django backend.
+      </p>
+      <div class="project-links">
+        <a href="https://github.com/maazkhan911/mindmate" target="_blank">View Code</a>
+        <a href="https://mindmate-ai.onrender.com" target="_blank">Live Demo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!-- 🔽 Add your other projects below in descending quality order -->
+
+      <!-- GBT Talk Chatbot -->
+
+      <div class="projects-grid">
+
+      <div class="project-card" data-category="chatbot">
+        <img src="{% static 'images/GBT3.png' %}" alt="GBT Talk" />
+        <div class="project-body">
+          <h3>📚 GBT Talk Chatbot</h3>
+          <div class="project-tags">
+            <span>GPT-2</span><span>Django</span><span>Transformer</span>
+          </div>
+          <p class="short-description">GPT-2 powered chatbot using transformers.</p>
+          <p class="full-description">Implemented a GPT-2 chatbot with Django using transformer models for human-like responses.</p>
+          <div class="project-links">
+            <a href="https://github.com/maazkhan911/gbt-chatbot" target="_blank">View Code</a>
+            <a href="https://gbt-talk.onrender.com" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- UniBot Chatbot -->
+      <div class="project-card" data-category="chatbot">
+        <img src="{% static 'images/unibot.png' %}" alt="UniBot" />
+        <div class="project-body">
+          <h3>🏫 University Admission Chatbot</h3>
+          <div class="project-tags">
+            <span>Dialogflow</span><span>Django</span><span>Chatbot</span>
+          </div>
+          <p class="short-description">Guides students through the admission process.</p>
+          <p class="full-description">Built with Dialogflow and Django to handle queries on eligibility, fees, and deadlines.</p>
+          <div class="project-links">
+            <a href="https://github.com/maazkhan911/university-chatbot" target="_blank">View Code</a>
+            <a href="https://university-chatbot.onrender.com" target="_blank">Live Demo</a>
+          </div>
+        </div>
+      </div>
+        {% comment %} {% endcomment %}
+
+        <div class="project-card" data-category="chatbot">
+          <img src="{% static 'images/dialogflow1.png' %}" alt="AI Chatbot" />
+          <div class="project-body">
+            <h3>🤖 AI Chatbot using Dialogflow</h3>
+            <div class="project-tags">
+              <span>Dialogflow</span><span>Django</span><span>NLP</span>
+            </div> 
+            <p class="short-description">
+              Dialogflow chatbot for customer queries.
+            </p>
+            <p class="full-description">
+              Created an intelligent chatbot integrated with Django backend. It
+              uses Dialogflow for NLP and intent detection. This project helps
+              in customer interaction automation. Used by businesses to handle
+              inquiries efficiently.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/maazkhan911/dialogflow-chatbot"
+                target="_blank"
+                >View Code</a
+              >
+              <a href="https://dialogflow-chatbot.onrender.com" target="_blank"
+                >Live Demo</a
+              >
+            </div>
+          </div>
+        </div>
+
+        {% comment %} {% endcomment %}
+
+        <div class="project-card" data-category="dl">
+          <img src="{% static 'images/dogVScat.png' %}" alt="Dog vs Cat" />
+          <div class="project-body">
+            <h3>🐶 Dog vs Cat Classifier</h3>
+            <div class="project-tags">
+              <span>CNN</span><span>Image Processing</span><span>Django</span>
+            </div>
+            <p class="short-description">Classifies dog and cat images.</p>
+            <p class="full-description">
+              Built a CNN model to classify dog and cat images. Preprocessed
+              over 20,000 images using augmentation. The model generalizes well
+              and performs real-time predictions. Deployed using Django web app
+              with an image upload feature.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/maazkhan911/dog-vs-cat-model"
+                target="_blank"
+                >View Code</a
+              >
+              <a href="https://dogcat-classifier.onrender.com" target="_blank"
+                >Live Demo</a
+              >
+            </div>
+          </div>
+        </div>
+
+        {% comment %} {% endcomment %}
+
+        <div class="project-card" data-category="dl">
+          <img src="{% static 'images/sportify.png' %}" alt="Spotify" />
+          <div class="project-body">
+            <h3>🎵 Spotify Song Popularity Prediction</h3>
+            <div class="project-tags">
+              <span>TensorFlow</span><span>Keras</span><span>ANN</span>
+            </div>
+            <p class="short-description">Predicts song popularity using ANN.</p>
+            <p class="full-description">
+              Developed an ANN model to predict a song's popularity based on
+              musical features. Extensive data preprocessing and normalization
+              were done. Achieved high prediction accuracy and visualized trends
+              across genres and time.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/maazkhan911/SpotiFy-ANN-model"
+                target="_blank"
+                >View Code</a
+              >
+              <a href="https://spotify-predictor.onrender.com" target="_blank"
+                >Live Demo</a
+              >
+            </div>
+          </div>
+        </div>
+
+        {% comment %} {% endcomment %}
+
+        <div class="project-card" data-category="ml">
+          <img src="{% static 'images/house_pricing.png' %}" alt="House" />
+          <div class="project-body">
+            <h3>🏡 House Price Prediction</h3>
+            <div class="project-tags">
+              <span>Random Forest</span><span>Regression</span
+              ><span>Matplotlib</span>
+            </div>
+            <p class="short-description">Predicts house prices using ML.</p>
+            <p class="full-description">
+              This ML model predicts house prices using features like location,
+              size, and condition. Data preprocessing included handling
+              outliers, missing values, and encoding. It helps real estate
+              agents and clients with reliable market predictions.
+            </p>
+            <div class="project-links">
+              <a
+                href="https://github.com/maazkhan911/House-Pricing-ML-Model"
+                target="_blank"
+                >View Code</a
+              >
+              <a
+                href="https://houseprice-predictor.onrender.com"
+                target="_blank"
+                >Live Demo</a
+              >
+            </div>
+          </div>
+        </div>
+
+        {% comment %} {% endcomment %}
+
+        <div class="projects-grid">
+          <div class="project-card" data-category="ml">
+            <img src="{% static 'images/titanic.png' %}" alt="Titanic" />
+            <div class="project-body">
+              <h3>🚢 Titanic Survival Prediction</h3>
+              <div class="project-tags">
+                <span>Python</span><span>Pandas</span><span>Sklearn</span>
+              </div>
+              <p class="short-description">
+                Predicts survival using RandomForest.
+              </p>
+              <p class="full-description">
+                This ML model predicts survival based on passenger data. We used
+                cleaning, feature engineering, model tuning, and random forest
+                to build it. The model was evaluated on accuracy and fairness
+                metrics to improve trust and performance.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/maazkhan911/Titanic-Model" target="_blank"
+                  >View Code</a
+                >
+                <a href="https://titanic-app.onrender.com" target="_blank"
+                  >Live Demo</a
+                >
+              </div>
+            </div>
+          </div>
+
+      </div>
+  </div>
+</section>
+
+{% comment %} Education {% endcomment %}
+
+<section class="education" id="education">
+  <div class="education-container">
+    <h2>Education</h2>
+    <p>A glimpse of my academic background.</p>
+
+    <div class="education-boxes">
+      <!-- 🎓 College -->
+      <div class="edu-card">
+        <h3>Forman Christian College, Lahore</h3>
+        <p class="edu-level">Higher Secondary Education</p>
+        <p class="edu-date">2023 - 2025</p>
+        <p class="edu-desc">I completed my F.Sc. (Pre-Engineering) with a strong foundation in Computer & Mathematics at Forman Christian College, Lahore.</p>
+      </div>
+
+      <!-- 🏫 School -->
+      <div class="edu-card">
+        <h3>Standard Grammar School, Lahore</h3>
+        <p class="edu-level">Matriculation</p>
+        <p class="edu-date">2021 - 2023</p>
+        <p class="edu-desc">I completed my class 10 education in Biology at Standard Grammar School, Lahore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2025 Maaz Khan. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://github.com/maazkhan911" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/maazkhan1122/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+
+  <script>
+    // ========= Modal Logic ==========
+    const modal = document.createElement("div");
+    modal.className = "project-modal";
+    Object.assign(modal.style, {
+      position: "fixed",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0, 0, 0, 0.8)",
+      display: "none",
+      zIndex: "9999",
+      justifyContent: "center",
+      alignItems: "center",
+      overflowY: "auto",
+      padding: "20px",
+    });
+
+    modal.innerHTML = `
+  <div style="
+    background-color: #1a1a2e;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 0 20px rgba(79,140,255,0.5);
+    max-height: 90vh;
+    overflow-y: auto;
+  ">
+    <span id="closeModal" style="
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+    ">&times;</span>
+
+    <h3 id="modal-title" style="font-size: 2rem; color: #a48fff;"></h3>
+    <img id="modal-img" src="" alt="Project Screenshot" style="width: 100%; height: auto; border-radius: 10px; margin: 20px 0;">
+
+    <div id="modal-tags" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;"></div>
+
+    <p id="modal-description" style="line-height: 1.8; font-size: 1rem;"></p>
+
+    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px;">
+      <a id="code-link" href="#" target="_blank" style="padding: 10px 20px; background-color: #4fc3f7; color: #0f0f1a; border-radius: 6px; text-decoration: none; font-weight: 600;">View Code</a>
+      <a id="demo-link" href="#" target="_blank" style="padding: 10px 20px; background-color: #a48fff; color: #0f0f1a; border-radius: 6px; text-decoration: none; font-weight: 600;">Live App</a>
+    </div>
+  </div>
+  `;
+
+    document.body.appendChild(modal);
+
+    const modalImg = modal.querySelector("#modal-img");
+    const modalTitle = modal.querySelector("#modal-title");
+    const modalDesc = modal.querySelector("#modal-description");
+    const modalTags = modal.querySelector("#modal-tags");
+    const codeLink = modal.querySelector("#code-link");
+    const demoLink = modal.querySelector("#demo-link");
+    const closeModal = modal.querySelector("#closeModal");
+
+    document.querySelectorAll(".project-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const img = card.querySelector("img").src;
+        const title = card.querySelector("h3").textContent;
+        const desc =
+          card.querySelector(".full-description")?.textContent ||
+          card.querySelector("p").textContent;
+        const tags = Array.from(
+          card.querySelectorAll(".project-tags span")
+        ).map((tag) => tag.textContent);
+
+        modalImg.src = img;
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+        modalTags.innerHTML = tags
+          .map(
+            (tag) => `<span style="
+        background-color: #1f1f3a;
+        border: 1px solid #4f8cff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+      ">${tag}</span>`
+          )
+          .join("");
+
+        // Customize per card if needed
+        codeLink.href =
+          card.querySelector(".project-links a:nth-child(1)")?.href || "#";
+        demoLink.href =
+          card.querySelector(".project-links a:nth-child(2)")?.href || "#";
+
+        modal.style.display = "flex";
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    // ========= Filter Buttons ==========
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".project-card");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-category");
+
+        cards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+          if (filter === "all" || category === filter) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</html>
